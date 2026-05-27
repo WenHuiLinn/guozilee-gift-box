@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>沉浸式禮盒預覽</title>
+
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+  <style>
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: transparent;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .viewer-wrap {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background:
+        radial-gradient(circle at 50% 18%, rgba(255,255,255,0.98), rgba(247,241,231,0.96) 42%, rgba(229,216,196,0.95) 100%);
+    }
+
+    model-viewer {
+      width: 100%;
+      height: 100%;
+      display: block;
+      --poster-color: transparent;
+    }
+
+    .viewer-hint {
+      position: absolute;
+      left: 50%;
+      bottom: 22px;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: calc(100% - 32px);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .viewer-hint span {
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.86);
+      font-size: 13px;
+      color: #6b5a3d;
+      box-shadow: 0 6px 18px rgba(43, 32, 18, 0.08);
+    }
+
+    @media (max-width: 768px) {
+      .viewer-hint {
+        bottom: 14px;
+      }
+
+      .viewer-hint span {
+        font-size: 12px;
+        padding: 7px 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="viewer-wrap">
+    <model-viewer
+      src="./gift-box.glb"
+      alt="沉浸式禮盒 3D 預覽"
+      camera-controls
+      auto-rotate
+      rotation-per-second="18deg"
+      shadow-intensity="1"
+      exposure="1"
+      loading="eager"
+      interaction-prompt="auto">
+    </model-viewer>
+
+    <div class="viewer-hint">
+      <span>拖曳旋轉</span>
+      <span>滾輪縮放</span>
+      <span>手機滑動查看</span>
+    </div>
+  </div>
+</body>
+</html>
