@@ -38,7 +38,7 @@
       top: 18px;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 5;
+      z-index: 10;
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
@@ -48,7 +48,7 @@
 
     .box-switcher button {
       border: 1px solid rgba(154, 123, 79, 0.35);
-      background: rgba(255, 255, 255, 0.88);
+      background: rgba(255, 255, 255, 0.9);
       color: #6b5a3d;
       border-radius: 999px;
       padding: 9px 15px;
@@ -111,15 +111,20 @@
 
 <body>
   <div class="viewer-wrap">
+
     <div class="box-switcher">
-      <button class="is-active" type="button" data-model="./guozili_box_40x30x20_kraft_realistic.glb">中型宅配箱</button>
-      <button type="button" data-model="./guozili_box_50x40x30.glb">大型宅配箱</button>
+      <button
+        class="is-active"
+        type="button"
+        data-model="./guozili_box_40x30x20_kraft_realistic.glb">
+        M（90）牛皮紙箱
+      </button>
     </div>
 
     <model-viewer
       id="giftBoxViewer"
-      src="./gift-box-basic.glb"
-      alt="沉浸式禮盒 3D 預覽"
+      src="./guozili_box_40x30x20_kraft_realistic.glb"
+      alt="果子狸 M 90 牛皮紙箱 3D 預覽"
       camera-controls
       auto-rotate
       rotation-per-second="18deg"
@@ -134,6 +139,7 @@
       <span>滾輪縮放</span>
       <span>手機滑動查看</span>
     </div>
+
   </div>
 
   <script>
