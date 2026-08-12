@@ -149,7 +149,6 @@
     buttons.forEach((button) => {
       button.addEventListener('click', () => {
         const modelUrl = button.getAttribute('data-model');
-
         viewer.setAttribute('src', modelUrl);
 
         buttons.forEach((btn) => btn.classList.remove('is-active'));
