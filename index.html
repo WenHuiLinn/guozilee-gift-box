@@ -33,6 +33,36 @@
       --poster-color: transparent;
     }
 
+    .box-switcher {
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: calc(100% - 28px);
+    }
+
+    .box-switcher button {
+      border: 1px solid rgba(154, 123, 79, 0.35);
+      background: rgba(255, 255, 255, 0.88);
+      color: #6b5a3d;
+      border-radius: 999px;
+      padding: 9px 15px;
+      font-size: 13px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(43, 32, 18, 0.08);
+    }
+
+    .box-switcher button.is-active {
+      background: #9a7b4f;
+      color: #ffffff;
+      border-color: #9a7b4f;
+    }
+
     .viewer-hint {
       position: absolute;
       left: 50%;
@@ -57,6 +87,16 @@
     }
 
     @media (max-width: 768px) {
+      .box-switcher {
+        top: 12px;
+        gap: 8px;
+      }
+
+      .box-switcher button {
+        font-size: 12px;
+        padding: 8px 12px;
+      }
+
       .viewer-hint {
         bottom: 14px;
       }
@@ -71,8 +111,14 @@
 
 <body>
   <div class="viewer-wrap">
+    <div class="box-switcher">
+      <button class="is-active" type="button" data-model="./guozili_box_40x30x20.glb">中型宅配箱</button>
+      <button type="button" data-model="./guozili_box_50x40x30.glb">大型宅配箱</button>
+    </div>
+
     <model-viewer
-      src="./gift-box.glb"
+      id="giftBoxViewer"
+      src="./gift-box-basic.glb"
       alt="沉浸式禮盒 3D 預覽"
       camera-controls
       auto-rotate
@@ -89,5 +135,21 @@
       <span>手機滑動查看</span>
     </div>
   </div>
+
+  <script>
+    const viewer = document.getElementById('giftBoxViewer');
+    const buttons = document.querySelectorAll('.box-switcher button');
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const modelUrl = button.getAttribute('data-model');
+
+        viewer.setAttribute('src', modelUrl);
+
+        buttons.forEach((btn) => btn.classList.remove('is-active'));
+        button.classList.add('is-active');
+      });
+    });
+  </script>
 </body>
 </html>
