@@ -115,7 +115,7 @@
     <div class="box-switcher">
   <button
     type="button"
-    data-model="./guozilee_traditional_box.glb">
+    data-model="./guozilee_traditional_box.glb?v=1">
     經典不敗 果子狸禮盒
   </button>
 
@@ -126,7 +126,20 @@
     中型水果宅配箱
   </button>
 </div>
-
+    
+<model-viewer
+  id="giftBoxViewer"
+  src="./guozilee_traditional_box.glb?v=1"
+  alt="經典不敗 果子狸禮盒 3D 預覽"
+  camera-controls
+  auto-rotate
+  rotation-per-second="18deg"
+  shadow-intensity="1"
+  exposure="1"
+  loading="eager"
+  interaction-prompt="auto">
+</model-viewer>
+    
     <model-viewer
       id="giftBoxViewer"
       src="./guozili_box_40x30x20_kraft_studio.glb"
